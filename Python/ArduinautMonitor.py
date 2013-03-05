@@ -4,6 +4,8 @@
  2013-03-02
  karl@symbollix.org
  http://symbollix.org/code/arduinaut/
+ https://github.com/karljacuncha/arduinaut/
+
 
 Requires: pySerial
 http://pyserial.sourceforge.net/

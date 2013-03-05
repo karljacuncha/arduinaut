@@ -1,14 +1,22 @@
 /*
 ArduinautMonitor
-====================
 2013-03-02
 karl@symbollix.org
-A GUI for use with the 'Arduinaut' sketch on arduino, with JSON serial updates.
+http://symbollix.org/code/arduinaut/
+https://github.com/karljacuncha/arduinaut/
+====================
 
+A GUI for use with the 'Arduinaut' sketch on arduino, with JSON serial updates.
+ 
 Requires controlP5:
 http://www.sojamo.de/libraries/controlP5/
 
-Similar to the accomanying python script  
+Similar to the accomanying python script, continually read the latest complete data set from the arduino.
+Pipe the results into slider/buttons for display.
+
+App provides a list of available serial ports on start up.
+Select the port & buad then hit connect to begin.
+
 
 */
 import controlP5.*;
@@ -29,7 +37,6 @@ color HIGHLIGHT =  color(242, 78, 34);
 PImage bg;
 PFont f;
 
-
 /* available ports & baudrates - for dropdowns & serial connection */
 final int[] baudRates = {
   115200, 57600, 38400, 31250, 28800, 19200, 14400, 9600
@@ -38,9 +45,10 @@ String[] serialPorts;
 
 
 /*
-custom class for arduino
-store the connection & data
-
+ Custom class for arduino.
+ Store the connection & data received. 
+ The connection, data reading & parsing are all handled in here, and teh class should be reasonably self contained & portable.
+ Everything after this is really just UI.
  */
 public class Arduino {
   public boolean[] digitalPins;

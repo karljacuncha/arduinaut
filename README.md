@@ -14,9 +14,9 @@ similar library that's well established, and provides read & write access.
 I also wasted a lot of time trying to debug what was happening with an accelerometer that
 eventually turned out to be fried.
 
-So rather than working with byte-streams, custom formats, flakey clients apps, etc...
-I wanted this to be both machine & human readable from the start, easy to work with,
-destination agnostic and in a flexible open standard.
+So rather than working with byte-streams, custom formats, flakey client apps with too
+many dependencies, etc... I wanted this to be both machine & human readable from the
+start, easy to work with, destination agnostic and in a flexible open standard.
 So JSON fits the bill.
 JSON also provides some data validation due to it's structure - which is always handy
 for serial comms.
@@ -28,9 +28,10 @@ of booelan/ints or raw data. But there's always a trade off...
 ## What's included?
 
 Aside from the Arduino sketch, there are 2 monitor scripts: a Python console script
-and a Processing GUI. Most of these 2 monitor scripts is actually taken up the usual 
-configuration.
-The actual serial reading code in each is basicaly just:
+and a Processing GUI. Most of these 2 monitor scripts is taken up with all the
+usual app configuration.
+
+The actual serial reading code in each case is basicaly just:
 
 	in-continous-loop:
 		// do stuff		
@@ -45,7 +46,7 @@ The actual serial reading code in each is basicaly just:
 		// do more stuff
 
 
-All scripts are reasonably well commented, and should be easy to reconfigure & extend.
+All scripts are reasonably well commented, and should be easy enough to reconfigure & extend.
 
 ### Arduino
 
@@ -59,12 +60,14 @@ Use the in-built serial monitor in the Arduino app to confirm the outout:
 	{"A0":999,"A1":0,"A2":674,"A3":0, ... "D13":1}
 	...
 
+With that in place, try one of the monitor scripts for a nicer read out:
+
 ### Python
 
 > ArduinautMonitor.py
 
 A CLI script to see the arduino output.
-(reuires pySerial)
+(requires pySerial)
 
 Run as:
 
